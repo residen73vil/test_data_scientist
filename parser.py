@@ -6,7 +6,7 @@ import pandas as pd
 import re
 
 def main(csv):
-    re_greatings = re.compile(r"(?:(?:здравствуйт?е?)|(?:добр(?:ый|ое)\s(?:вчер|день|утро|ночь))|(?:(?:день|вчер|учеро|ночь)\sдобр(?:ый|ое)))", re.IGNORECASE)
+    re_greatings = re.compile(r"(?:(?:здравствуйт?е?)|(?:добр(?:ый|ое)\s(?:вечер|день|утро|ночь))|(?:(?:день|вечер|утро|ночь)\sдобр(?:ый|ое)))", re.IGNORECASE)
     re_farewells = re.compile(r"(?:(?:до\ свидания)|(?:всего\ доброго)|(?:до\ новых\ встреч)|(?:хорошего (?:дня|вечера)))", re.IGNORECASE)
     re_name = re.compile(r"(?:меня)\s*(?:зовут)?\s*(\S*)\s*(?:зовут)?", re.IGNORECASE)
     re_company_name = re.compile(r"(?:(?:компания)\s*(\S*\s?бизнес))", re.IGNORECASE)
@@ -28,13 +28,13 @@ def main(csv):
     for i in statistics:
         print("диалог: " + str(i))
         if statistics[i]['greatings'].empty:
-            print(" Нет приветсвия")
+            print(" Нет приветствия")
         else:
             print(" Приветствие на строчках: " + str([ i for i in statistics[i]['greatings'].index]))
         if statistics[i]['name'].empty:
-            print(" Сотрудник не предствился")
+            print(" Сотрудник не представился")
         else:
-            print(" Сотрудника представлися как: " + statistics[i]['name'].iloc[0].values[0])
+            print(" Сотрудника представился как: " + statistics[i]['name'].iloc[0].values[0])
         if statistics[i]['name'].empty:
             print(" Компания не упоминалась")
         else:
